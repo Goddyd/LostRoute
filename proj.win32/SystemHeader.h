@@ -32,5 +32,6 @@
 #endif
 
 using namespace CocosDenshion;
+USING_NS_CC;
 
 #endif

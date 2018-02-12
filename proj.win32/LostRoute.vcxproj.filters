@@ -24,6 +24,15 @@
     <ClCompile Include="MyUtility.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="BaseLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -39,6 +48,15 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="MyUtility.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpScene.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
