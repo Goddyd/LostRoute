@@ -1,7 +1,4 @@
 #include "HelloWorldScene.h"
-#include "SimpleAudioEngine.h"
-
-USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
@@ -31,7 +28,34 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    /////////////////////////////
+	//使用精灵帧缓存加载
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/loading_texture.plist");
+	
+	//加载背景
+	auto bg = TMXTiledMap::create("map/red_bg.tmx");
+	this->addChild(bg);
+
+	auto logo = Sprite::createWithSpriteFrameName("logo.png");
+	this->addChild(logo);
+	logo->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+
+	auto sprite = Sprite::createWithSpriteFrameName("loding4.png");
+	this->addChild(sprite);
+	sprite->setPosition(logo->getPosition() - Vec2(0, logo->getContentSize().height/2 + 30));
+    //创建动画
+	Animation* animation = Animation::create();
+	for ( int i = 1; i <= 4; i++)
+	{
+		__String* frameName = __String::createWithFormat("loding%d.png", i);
+		SpriteFrame* spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frameName->getCString());
+		animation->addSpriteFrame(spriteFrame);
+	}
+	animation->setDelayPerUnit(0.5f);
+	animation->setRestoreOriginalFrame(true);//动画结束还原出事状态
+
+	Animate* action = Animate::create(animation);
+	sprite->runAction(RepeatForever::create(action));
+	/////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
 
@@ -64,36 +88,6 @@ bool HelloWorld::init()
 
     // add a label shows "Hello World"
     // create and initialize a label
-
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    if (label == nullptr)
-    {
-        problemLoading("'fonts/Marker Felt.ttf'");
-    }
-    else
-    {
-        // position the label on the center of the screen
-        label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                                origin.y + visibleSize.height - label->getContentSize().height));
-
-        // add the label as a child to this layer
-        this->addChild(label, 1);
-    }
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    if (sprite == nullptr)
-    {
-        problemLoading("'HelloWorld.png'");
-    }
-    else
-    {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-    }
     return true;
 }
 

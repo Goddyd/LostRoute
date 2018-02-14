@@ -2,11 +2,12 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "SystemHeader.h"
 USING_NS_CC;
 class HelloWorld : public Layer
 {
 public:
-    static cocos2d::Scene* createScene();
+    static Scene* createScene();
 
     virtual bool init();
     
