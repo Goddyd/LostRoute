@@ -58,8 +58,16 @@ bool HelloWorld::init()
 	/////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
+	//Òì²½Ìí¼ÓÎÆÀí»º´æ
+	m_nNumberOfLoaded = 0;
+	Director::getInstance()->getTextureCache()->addImageAsync(
+		"texture/home_texture.png",CC_CALLBACK_1(HelloWorld::loadingTextureCallBack,this));
+	Director::getInstance()->getTextureCache()->addImageAsync(
+		"texture/setting_texture.png",CC_CALLBACK_1(HelloWorld::loadingTextureCallBack,this));
+	Director::getInstance()->getTextureCache()->addImageAsync(
+		"texture/gameplay_texture.png", CC_CALLBACK_1(HelloWorld::loadingTextureCallBack, this));
 
-    // add a "close" icon to exit the progress. it's an autorelease object
+	// add a "close" icon to exit the progress. it's an autorelease object
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
@@ -105,6 +113,25 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
     //EventCustom customEndEvent("game_scene_close_event");
     //_eventDispatcher->dispatchEvent(&customEndEvent);
+}
 
+void HelloWorld::loadingTextureCallBack(Texture2D* texture)
+{
+	switch (m_nNumberOfLoaded++)
+	{
+	case 0:
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/home_texture.plist", texture);
+		break;
+	case 1:
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/setting_texture.plist", texture);
+		break;
+	case 2:
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/gameplay_texture.plist", texture);
+		this->schedule(schedule_selector(HelloWorld::delayCall), 1, 1, 3);
+		break;
+	}
+}
+void HelloWorld::delayCall(float dt) 
+{
 
 }
