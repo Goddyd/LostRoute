@@ -67,7 +67,7 @@ bool HelloWorld::init()
 	Director::getInstance()->getTextureCache()->addImageAsync(
 		"texture/gameplay_texture.png", CC_CALLBACK_1(HelloWorld::loadingTextureCallBack, this));
 
-	// add a "close" icon to exit the progress. it's an autorelease object
+	// add a "close" icon to exit the progress. it's an autorelease object 
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
@@ -92,10 +92,8 @@ bool HelloWorld::init()
     this->addChild(menu, 1);
 
     /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
+	//多线程预处理声音
+	_loadingAudioThread = new thread(&HelloWorld::loadingAudio,this);
     return true;
 }
 
@@ -134,4 +132,19 @@ void HelloWorld::loadingTextureCallBack(Texture2D* texture)
 void HelloWorld::delayCall(float dt) 
 {
 
+}
+void HelloWorld::loadingAudio() 
+{
+	log("Audio has been loaded");
+	SimpleAudioEngine::getInstance()->preloadBackgroundMusic(bg_music_1);
+	SimpleAudioEngine::getInstance()->preloadBackgroundMusic(bg_music_2);
+}
+void HelloWorld::onExit()
+{
+	Layer::onExit();
+	_loadingAudioThread->join();
+	CC_SAFE_DELETE(_loadingAudioThread);//delete _loadingAudioThread _loadingAudioThread = nullptr;
+	SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("texture/loading_texture.plist");
+	Director::getInstance()->getTextureCache()->removeTextureForKey("texture/loading_texture.png");
+	this->unschedule(schedule_selector(HelloWorld::delayCall));
 }
