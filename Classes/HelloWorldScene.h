@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "SystemHeader.h"
 #include <thread>
+#include "HomeScene.h"
 using namespace std;
 USING_NS_CC;
 class HelloWorld : public Layer

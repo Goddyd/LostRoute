@@ -152,6 +152,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="BaseLayer.cpp" />
     <ClCompile Include="HelpScene.cpp" />
+    <ClCompile Include="HomeScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyUtility.cpp" />
     <ClCompile Include="SettingScene.cpp" />
@@ -161,6 +162,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="BaseLayer.h" />
     <ClInclude Include="HelpScene.h" />
+    <ClInclude Include="HomeScene.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MyUtility.h" />
     <ClInclude Include="SettingLayer.h" />

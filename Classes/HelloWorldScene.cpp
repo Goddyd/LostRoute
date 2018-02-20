@@ -131,7 +131,8 @@ void HelloWorld::loadingTextureCallBack(Texture2D* texture)
 }
 void HelloWorld::delayCall(float dt) 
 {
-
+	auto homeScene = HomeScene::createScene();
+	Director::getInstance()->replaceScene(homeScene);
 }
 void HelloWorld::loadingAudio() 
 {
@@ -146,5 +147,5 @@ void HelloWorld::onExit()
 	CC_SAFE_DELETE(_loadingAudioThread);//delete _loadingAudioThread _loadingAudioThread = nullptr;
 	SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("texture/loading_texture.plist");
 	Director::getInstance()->getTextureCache()->removeTextureForKey("texture/loading_texture.png");
-	this->unschedule(schedule_selector(HelloWorld::delayCall));
+	this->unschedule(schedule_selector(HelloWorld::delayCall)); 
 }
