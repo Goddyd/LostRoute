@@ -3,12 +3,14 @@
 
 #include"cocos2d.h"
 #include"SystemHeader.h"
+#include "SettingLayer.h"
+#include "HelpScene.h"
 
 typedef enum {
 	MenuItemStart,
 	MenuItemSetting,
 	MenuItemHelp
-}ActionType;
+}ActionMenu;
 
 class HomeScene:Layer
 {

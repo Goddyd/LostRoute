@@ -36,6 +36,18 @@
     <ClCompile Include="HomeScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="GamePlayScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Fighter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -63,6 +75,18 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="HomeScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlayScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Fighter.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
